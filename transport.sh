@@ -26,5 +26,5 @@ transport.compile(){
   lib=$1
   system -Kn "CRTBNDCL PGM(${lib}/CRTOBJS) SRCFILE(${lib}/SRCCL) SRCMBR(CRTOBJS)"
   system -Kn "CRTCMD CMD(${lib}/CRTOBJS) PGM(${lib}/CRTOBJS) SRCFILE(${lib}/QCMDSRC)"
-  system -Kn "CRTOBJS SRCLIB(${lib}) OBJLIB(${lib}) DTALIB(${lib})"
+  system -Kn "${lib}/CRTOBJS SRCLIB(${lib}) OBJLIB(${lib}) DTALIB(${lib})"
 }
