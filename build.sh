@@ -56,7 +56,7 @@ restore.crtsrcpf(){
   for entry in */
     do
       file=${entry%%/}
-      system -Kn "CRTSRCPF FILE(${lib}/${file}) RCDLEN(512) TEXT('"${txt}" ${file} Sources')" 
+      system -Kn "CRTSRCPF FILE(${lib}/${file}) RCDLEN(240) TEXT('"${txt}" ${file} Sources')" 
       restore.cpyfrmstmf ${lib} ${file} "${txt}"
     done   
   popd >> /dev/null 
