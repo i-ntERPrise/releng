@@ -78,7 +78,11 @@ restore.cpyfrmstmf(){
                               " MBROPT(*ADD)" \
                               " CVTDTA(*AUTO)" \                                   
                               " STMFCCSID(*STMF)" \                                
-                              " DBFCCSID(*FILE)"                                 
+                              " DBFCCSID(*FILE)"
+        system -Kn "CHGPFM FILE(${lib}/${srf})"          
+                         " MBR(${mbr})" \               
+                         " SRCTYPE(${atr})" \          
+                         " TEXT('Created by Jenkins')"
       fi 
     done
     popd >> /dev/null 
