@@ -76,12 +76,12 @@ restore.cpyfrmstmf(){
         system -Kn "CPYFRMSTMF FROMSTMF('${PWD}/${entry}')" \
                               " TOMBR('/QSYS.LIB/${lib}.LIB/${srf}.FILE/${mbr}.MBR')" \
                               " MBROPT(*ADD)" \
-                              " CVTDTA(*AUTO)" \                                   
-                              " STMFCCSID(*STMF)" \                                
+                              " CVTDTA(*AUTO)" \
+                              " STMFCCSID(*STMF)" \
                               " DBFCCSID(*FILE)"
-        system -Kn "CHGPFM FILE(${lib}/${srf})" \          
-                         " MBR(${mbr})" \               
-                         " SRCTYPE(${atr})" \          
+        system -Kn "CHGPFM FILE(${lib}/${srf})" \
+                         " MBR(${mbr})" \
+                         " SRCTYPE(${atr})" \
                          " TEXT('Created by Jenkins')"
       fi 
     done
