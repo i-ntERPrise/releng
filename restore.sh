@@ -53,7 +53,7 @@ restore.crtsrcpf(){
     do
       file=${entry%%/}
       system -Kn "CRTSRCPF FILE(${lib}/${file}) RCDLEN(128) TEXT('${text} ${file} Sources')" 
-      cpyfrmstmf ${lib} ${file} ${txt}
+      restore.cpyfrmstmf ${lib} ${file} ${txt}
     done   
   popd >> /dev/null 
 } 
