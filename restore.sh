@@ -23,7 +23,7 @@
 restore(){
   restore.crtlib "B${BUILD_NUMBER}DBS" "Database Services"
   restore.crtsrcpf "B${BUILD_NUMBER}DBS" "Database_Services" "Database Services"
-  restore.dltlib "B${BUILD_NUMBER}DBS"
+ # restore.dltlib "B${BUILD_NUMBER}DBS"
 } 
   
 ## Create a library 
@@ -67,12 +67,17 @@ restore.cpyfrmstmf(){
   dir=$2 
   srf=$2 
   txt=$3 
-  pushd ${dir} >> /dev/null  
   for entry in * 
     do 
       if [ -f ${entry} ];then 
-        echo ${entry} 
+        atr="${entry##*.}"
+        mbr="${entry%.*}"
+        system -Kn "CPYFRMSTMF FROMSTMF('${PWD}/${entry}') \
+                               TOMBR('/QSYS.LIB/${lib}.LIB/${srf}.FILE/${mbr}.MBR')\
+                               MBROPT(*ADD)\
+                               CVTDTA(*AUTO)\                                   
+                               STMFCCSID(*STMF)\                                
+                               DBFCCSID(*FILE)"                                 
       fi 
     done 
-  popd >> /dev/null 
 } 
