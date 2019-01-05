@@ -52,7 +52,7 @@ restore.crtsrcpf(){
   for entry in */
     do
       file=${entry%%/}
-      system -Kn "CRTSRCPF FILE(${lib}/${file}) RCDLEN(128) TEXT('${text} ${file} Sources')" 
+      system -Kn "CRTSRCPF FILE(${lib}/${file}) RCDLEN(128) TEXT('${txt} ${file} Sources')" 
       restore.cpyfrmstmf ${lib} ${file} ${txt}
     done   
   popd >> /dev/null 
@@ -67,6 +67,7 @@ restore.cpyfrmstmf(){
   dir=$2 
   srf=$2 
   txt=$3 
+  pushd ${dir} >> /dev/null 
   for entry in * 
     do 
       if [ -f ${entry} ];then 
@@ -79,5 +80,6 @@ restore.cpyfrmstmf(){
                                STMFCCSID(*STMF)\                                
                                DBFCCSID(*FILE)"                                 
       fi 
-    done 
+    done
+    popd >> /dev/null 
 } 
