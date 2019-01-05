@@ -73,12 +73,12 @@ restore.cpyfrmstmf(){
       if [ -f ${entry} ];then 
         atr="${entry##*.}"
         mbr="${entry%.*}"
-        system -Kn "CPYFRMSTMF FROMSTMF('${PWD}/${entry}') \
-                               TOMBR('/QSYS.LIB/${lib}.LIB/${srf}.FILE/${mbr}.MBR') \
-                               MBROPT(*ADD) \
-                               CVTDTA(*AUTO) \                                   
-                               STMFCCSID(*STMF) \                                
-                               DBFCCSID(*FILE)"                                 
+        system -Kn "CPYFRMSTMF FROMSTMF('${PWD}/${entry}')" \
+                              " TOMBR('/QSYS.LIB/${lib}.LIB/${srf}.FILE/${mbr}.MBR')" \
+                              " MBROPT(*ADD)" \
+                              " CVTDTA(*AUTO)" \                                   
+                              " STMFCCSID(*STMF)" \                                
+                              " DBFCCSID(*FILE)"                                 
       fi 
     done
     popd >> /dev/null 
