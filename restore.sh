@@ -20,15 +20,15 @@
 #
 # Restore the intERPrise code from git into libraries and source files
 #
-main(){
-  crtlib "B${BUILD_NUMBER}DBS" "Database Services"
-  crtsrcpf "B${BUILD_NUMBER}DBS" "Database_Services" "Database Services"
-  dltlib "B${BUILD_NUMBER}DBS"
+restore(){
+  restore.crtlib "B${BUILD_NUMBER}DBS" "Database Services"
+  restore.crtsrcpf "B${BUILD_NUMBER}DBS" "Database_Services" "Database Services"
+  restore.dltlib "B${BUILD_NUMBER}DBS"
 } 
   
 ## Create a library 
 ## Parameters: library, text 
-crtlib(){ 
+restore.crtlib(){ 
   lib=$1 
   txt=$2 
   system -Kn "CRTLIB LIB(${lib}) TEXT('${BUILD_TAG} ${txt}')" 
@@ -36,14 +36,14 @@ crtlib(){
 
 ## Delete a library 
 ## Parameters: library 
-dltlib(){ 
+restore.dltlib(){ 
   lib=$1 
   system -Kn "DLTLIB LIB(${lib})" 
 } 
 
 ## Create source files from all directories in the passed directory 
 ## Parameters: library, directory, text 
-crtsrcpf(){
+restore.crtsrcpf(){
   lib=$1
   dir=$2
   txt=$3
@@ -62,7 +62,7 @@ crtsrcpf(){
 ## Copy all files in the passed directory to the  
 ## sourcefile with the same name in the passed library 
 ## Parameters: library, directory/sourcefile, text  
-cpyfrmstmf(){ 
+restore.cpyfrmstmf(){ 
   lib=$1 
   dir=$2 
   srf=$2 
@@ -76,7 +76,3 @@ cpyfrmstmf(){
     done 
   popd >> /dev/null 
 } 
-
-main 
-
-
