@@ -13,6 +13,11 @@ intERPrise is composed out of several independently buildable modules. The curre
 * All changes are done through pull requests
 * No direct updates to the master branch are allowed
 
+## Installation Plan
+* Every module contains its own installation program
+* The installation program will update a target library from a build library
+* All installation programs are contained in this repository
+
 ## Build Flow
 * User changes code in a separate branch or fork
 * User creates a pull request
